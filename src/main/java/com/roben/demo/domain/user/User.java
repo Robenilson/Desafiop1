@@ -1,11 +1,9 @@
 package com.roben.demo.domain.user;
 
 
+import com.roben.demo.dtos.UserDTO;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 
@@ -14,6 +12,7 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @EqualsAndHashCode(of = "id")
 public class User {
 
@@ -30,4 +29,17 @@ public class User {
     private BigDecimal banlance;
     @Enumerated(EnumType.STRING)
     private  UserType userType;
+
+     public     User(UserDTO data){
+         this.fristName= data.fristName();
+         this.lastName= data.lastName();
+         this.document= data.document();
+         this.email=data.email();
+         this.password=data.password();
+         this.banlance=data.banlance();
+         this.userType=data.userType();
+     }
+
+
+
 }
